@@ -32,6 +32,7 @@ public class scr_Move : MonoBehaviour
     {
         m_lastVelocity = m_rb.velocity;
         Movement();
+        LookAtMouse();
     }
 
     private void Movement()
@@ -102,5 +103,10 @@ public class scr_Move : MonoBehaviour
     {
         m_direction = Vector2.Reflect(m_lastVelocity.normalized, Collision.contacts[0].normal);
         m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f);
+    }
+    public void LookAtMouse()
+    {
+        Vector2 i_mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = i_mousePos - new Vector2(transform.position.x, transform.position.y);
     }
 }

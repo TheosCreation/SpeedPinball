@@ -13,4 +13,4 @@ public static class VectorExtension
 public enum Axis { 
 
     X, Y, Z
-}
+} 

@@ -8,12 +8,12 @@ public class scr_BulletTrail : MonoBehaviour
     private Vector3 m_startPos;
     private Vector3 m_targetPos;
     private float m_progress;
-    [SerializeField] private float m_speed = 40f;
+    [SerializeField] private float m_speed = 0.1f;
     void Start()
     {
         m_startPos = transform.position.WithAxis(Axis.Z, -1);
     }
-
+        
     void Update()
     {
         m_progress += Time.deltaTime * m_speed; 
