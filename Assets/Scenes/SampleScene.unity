@@ -171,6 +171,18 @@ MonoBehaviour:
   m_cameraRef: {fileID: 519420028}
   m_weaponRange: 40
   m_muzzleFlash: {fileID: 0}
+--- !u!114 &267837686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267837675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca0209445eb1104ebf3740e54fcf762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &313700841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5948874956100689518, guid: 0f82455174ea91f48b8eccb31454a10d, type: 3}
@@ -1366,6 +1378,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6874474298594128465, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
+      propertyPath: m_speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874474298594128465, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
+      propertyPath: m_speedCap
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7423375537872025095, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
       propertyPath: m_Name
       value: Pfb_mainGuy
@@ -1426,7 +1446,8 @@ PrefabInstance:
       propertyPath: m_speedCap
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3020387757388194942, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
 --- !u!4 &2064399429 stripped
 Transform:
