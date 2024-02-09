@@ -27,10 +27,14 @@ public class PlayerMovement : MonoBehaviour
     {
         m_lastVelocity = m_rb.velocity;
         LookAtMouse();
+        
     }
     public void ProcessMove(Vector2 input)
     {
-        m_rb.velocity += new Vector2(Mathf.Clamp(input.x * m_speed, -m_speedCap, m_speedCap), Mathf.Clamp(input.y * m_speed, -m_speedCap, m_speedCap));
+        Debug.Log(input);
+      
+        m_rb.velocity = new Vector2(m_rb.velocity.x+(input.x * m_speed), m_rb.velocity.y+(input.y * m_speed));
+        
     }
 
     private void OnCollisionEnter2D(Collision2D Collision)
