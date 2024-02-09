@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7423375537872025099}
   - component: {fileID: 7423375537872025092}
   - component: {fileID: 7423375537872025093}
-  - component: {fileID: 7423375537872025097}
+  - component: {fileID: 6874474298594128465}
+  - component: {fileID: 3020387757388194942}
   m_Layer: 0
   m_Name: Pfb_mainGuy
   m_TagString: Untagged
@@ -124,7 +125,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7423375537872025097
+--- !u!114 &6874474298594128465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,11 +134,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7423375537872025095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693695d0f560c444ca73c8f13a1ba86a, type: 3}
+  m_Script: {fileID: 11500000, guid: cbcc0e257a37c0f4ca70ba57b1f2aeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 0.1
-  m_speedCap: 5
+  m_speedCap: 3
   m_turnDelay: 0.5
   m_turnSpeed: 0.4
   m_direction: {x: 0, y: 0, z: 0}
+--- !u!114 &3020387757388194942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423375537872025095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca0209445eb1104ebf3740e54fcf762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

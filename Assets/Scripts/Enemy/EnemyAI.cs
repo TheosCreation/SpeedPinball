@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     {
         //m_rb.MovePosition(m_target.transform.position);
         Vector2 direction = m_target.transform.position - transform.position;
-        m_rb.velocity += new Vector2(Mathf.Clamp(direction.x * m_speedCap, -m_speedCap, m_speedCap), Mathf.Clamp(direction.y * m_speed, -m_speedCap, m_speedCap));
+        m_rb.velocity += new Vector2(Mathf.Clamp(direction.x * m_speedCap, -m_speed, m_speedCap), Mathf.Clamp(direction.y * m_speed, -m_speedCap, m_speedCap));
     }
 
     private bool TargetInAttackRange()
