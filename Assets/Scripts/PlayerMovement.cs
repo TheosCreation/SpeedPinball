@@ -1,46 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
     private Rigidbody2D m_rb;
     private Vector2 m_lastVelocity;
-    public float m_speed = 0.1f;
-    public float m_speedCap = 3.0f;
-    public float m_turnDelay = 0.5f; //sets speed to this number when turning so slide aint that bad
-    public float m_turnSpeed =  0.4f;
-    public Vector3 m_direction;
-
-    
+    public Vector2 m_direction;
+    public float m_acceleration = 0.1f;
+    public float m_movementVelocityCap = 20.0f;
  
     void Start()
     {
        m_rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    
     void Update()
     {
         m_lastVelocity = m_rb.velocity;
         LookAtMouse();
-        
-    }
-    public void ProcessMove(Vector2 input)
-    {
-        Debug.Log(input);
-      
-        m_rb.velocity = new Vector2(m_rb.velocity.x+(input.x * m_speed), m_rb.velocity.y+(input.y * m_speed));
-        
     }
 
-    private void OnCollisionEnter2D(Collision2D Collision)
+    void OnCollisionEnter2D(Collision2D Collision)
     {
         m_direction = Vector2.Reflect(m_lastVelocity.normalized, Collision.contacts[0].normal);
+        //halfs the velocity and reflects at an angle of somekind
         m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f);
+    }
+    public void ProcessMoveX(float input)
+    {
+        if( m_rb.velocity.x < m_movementVelocityCap &&  m_rb.velocity.x > -m_movementVelocityCap)
+        {
+            m_rb.velocity = new Vector2(m_rb.velocity.x+(input * m_acceleration), m_rb.velocity.y);
+        }
+    }
+    public void ProcessMoveY(float input)
+    {
+        if( m_rb.velocity.y < m_movementVelocityCap  &&  m_rb.velocity.y > -m_movementVelocityCap)
+        {
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y+(input * m_acceleration));
+        }
     }
     public void LookAtMouse()
     {

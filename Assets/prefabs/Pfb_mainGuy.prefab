@@ -137,11 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcc0e257a37c0f4ca70ba57b1f2aeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 0.1
-  m_speedCap: 3
-  m_turnDelay: 0.5
-  m_turnSpeed: 0.4
-  m_direction: {x: 0, y: 0, z: 0}
+  m_direction: {x: 0, y: 0}
+  m_acceleration: 1
+  m_decceleration: 0.5
+  m_baseVelocityCap: 20
 --- !u!114 &3020387757388194942
 MonoBehaviour:
   m_ObjectHideFlags: 0

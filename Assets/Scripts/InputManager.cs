@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,18 +13,13 @@ public class InputManager : MonoBehaviour
         PinBall = pinBallInput.PinBall;
 
         movement = GetComponent<PlayerMovement>();
-
-        //Player Motor
-        //PinBall.Jump.performed += ctx => motor.Jump();
-        //PinBall.Crouch.started += ctx => motor.StartCrouch();
-        //PinBall.Crouch.canceled += ctx => motor.EndCrouch();
-        //pinBallInput.PinBall.Aim.canceled += ctx => playerWeapon.EndAim();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement.ProcessMove(PinBall.Movement.ReadValue<Vector2>());
+        movement.ProcessMoveX(PinBall.Movement.ReadValue<Vector2>().x);
+        movement.ProcessMoveY(PinBall.Movement.ReadValue<Vector2>().y);
     }
 
     private void OnEnable()
