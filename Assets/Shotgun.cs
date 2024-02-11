@@ -11,7 +11,7 @@ public class Shotgun : scr_Weapons
     [SerializeField] private float m_shotgunRecoil = 5.0f;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
