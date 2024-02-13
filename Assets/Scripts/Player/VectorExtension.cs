@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 public static class VectorExtension
 {
     public static Vector3 WithAxis(this Vector3 vector, Axis axis, float value) {
