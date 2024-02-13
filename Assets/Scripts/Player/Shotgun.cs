@@ -8,7 +8,7 @@ public class Shotgun : scr_Weapons
 
     [SerializeField] private float m_shotgunSpread = 0.2f;
     [SerializeField] private int m_shotgunCount = 5;
-    [SerializeField] private float m_shotgunRecoil = 5.0f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,7 +37,7 @@ public class Shotgun : scr_Weapons
                 m_gunPoint.position,
                 adjustedDirection,
                 m_weaponRange,
-                LayerMask.NameToLayer("Player")
+                m_bulletPassThrough
             );
 
             var trail = Instantiate(
@@ -49,6 +49,7 @@ public class Shotgun : scr_Weapons
             var trailScript = trail.GetComponent<scr_BulletTrail>();
             if (hit.collider != null)
             {
+
                 trailScript.SetTargetPos(hit.point);
             }
             else
@@ -58,7 +59,7 @@ public class Shotgun : scr_Weapons
             }
         }
 
-        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_shotgunRecoil, rb.velocity.y - transform.up.y * m_shotgunRecoil);
+        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
     }
 }
 

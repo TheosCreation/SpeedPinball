@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Pistol : scr_Weapons
 {
     // Start is called before the first frame update
-    [SerializeField] private float m_PistolRecoil = 1.0f; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,27 +26,31 @@ public class Pistol : scr_Weapons
         var hit = Physics2D.Raycast(
             m_gunPoint.position,
             transform.up,
-            m_weaponRange, LayerMask.NameToLayer("Player")
-            );
+            m_weaponRange, ~m_bulletPassThrough); 
         var trail = Instantiate(
             m_bulletTrail,
             m_gunPoint.position,
             transform.rotation
-            );
+            ); ;
         var trailScript = trail.GetComponent<scr_BulletTrail>();
         if (hit.collider != null)
         {
-
+            var hitEnemy = hit.collider.gameObject;
+            if (hitEnemy.CompareTag("Enemy")) {
+                hitEnemy.GetComponent<EnemyAI>().TakeDamage(m_damage);
+            }
+  
             trailScript.SetTargetPos(hit.point);
         }
         else
         {
+
             var endPos = m_gunPoint.position + transform.up * m_weaponRange;
             trailScript.SetTargetPos(endPos);
 
         }
 
-        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_PistolRecoil, rb.velocity.y - transform.up.y * m_PistolRecoil);
+        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
     }
 }
 

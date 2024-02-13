@@ -1534,4 +1534,8 @@ MonoBehaviour:
   m_cameraRef: {fileID: 519420028}
   m_weaponRange: 40
   m_muzzleFlash: {fileID: 0}
-  m_PistolRecoil: 1
+  m_recoil: 1
+  m_damage: 20
+  m_bulletPassThrough:
+    serializedVersion: 2
+    m_Bits: 64

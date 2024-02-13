@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9168206041625019691}
   m_Layer: 0
   m_Name: Pfb_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_target: {fileID: 7423375537872025095, guid: 4824837140a03a942a7435f2a38ab006, type: 3}
   m_detectRange: 8
-  m_speed: 0.01
-  m_speedCap: 0.05
+  m_speed: 0.1
+  m_speedCap: 2
   m_turnDelay: 0.5
   m_turnSpeed: 0.4

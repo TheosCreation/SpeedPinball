@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
     public float m_speedCap = 5.0f;
     public float m_turnDelay = 0.5f; //sets speed to this number when turning so slide aint that bad
     public float m_turnSpeed =  0.4f;
-
+    public float m_health = 100;
     void Start()
     {
         m_rb = GetComponent<Rigidbody2D>();
@@ -43,6 +43,12 @@ public class EnemyAI : MonoBehaviour
         else 
         {
             return false;
+        }
+    }
+    public void TakeDamage(float _Damage) {
+        m_health -= _Damage;
+        if (m_health <= 0) { 
+            Destroy(gameObject); 
         }
     }
 }
