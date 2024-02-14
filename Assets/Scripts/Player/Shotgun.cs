@@ -35,7 +35,7 @@ public class Shotgun : scr_Weapons
                 m_gunPoint.position,
                 adjustedDirection,
                 m_weaponRange,
-                m_bulletPassThrough
+                ~m_bulletPassThrough
             );
 
             var trail = Instantiate(

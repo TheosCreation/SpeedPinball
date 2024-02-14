@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Bouncy
+  - Slower
   layers:
   - Default
   - TransparentFX

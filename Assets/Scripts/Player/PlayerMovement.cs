@@ -23,7 +23,22 @@ public class PlayerMovement : MonoBehaviour
     {
         m_direction = Vector2.Reflect(m_lastVelocity.normalized, Collision.contacts[0].normal);
         //halfs the velocity and reflects at an angle of somekind
-        m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f);
+        if (Collision.gameObject.CompareTag("Bouncy"))
+        {
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f)) * 2;
+        }
+        else
+        {
+
+            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D Collision)
+    {
+        if (Collision.gameObject.CompareTag("Slower"))
+        {
+            m_rb.velocity /= 2;
+        }
     }
     public void ProcessMoveX(float input)
     {
