@@ -1,3 +1,4 @@
+using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 public class scr_Camera : MonoBehaviour
@@ -6,7 +7,7 @@ public class scr_Camera : MonoBehaviour
 
     public GameObject m_player;
     private Vector3 m_offset = new Vector3(0, 0, -10f);
-    public float m_offsetAmount = 5.0f;
+    [SerializeField] private float m_offsetMultiplier = 1.0f;
     public float m_smoothTime = 0.25f;
     public Vector3 m_velocity = Vector3.zero;
     private bool m_shake = false;
@@ -18,19 +19,22 @@ public class scr_Camera : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.W)) {
-            m_offset = new Vector3(m_offset.x, m_offsetAmount, -10f);
-        } 
-        if (Input.GetKey(KeyCode.S)) {
-            m_offset = new Vector3(m_offset.x, -m_offsetAmount, -10f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            m_offset = new Vector3(m_offsetAmount, m_offset.y, -10f);
-        }
-        if (Input.GetKey(KeyCode.A)) {
-            m_offset = new Vector3(-m_offsetAmount, m_offset.y, -10f);
-        } 
+        /* m_offsetAmount = m_offsetMultiplier * (m_player.GetComponent<Rigidbody2D>().velocity.x+ m_player.GetComponent<Rigidbody2D>().velocity.y)/ 20;
+         if (Input.GetKey(KeyCode.W)) {
+             m_offset = new Vector3(m_offset.x, m_offsetAmount, -10f);
+         } 
+         if (Input.GetKey(KeyCode.S)) {
+             m_offset = new Vector3(m_offset.x, -m_offsetAmount, -10f);
+         }
+         if (Input.GetKey(KeyCode.D))
+         {
+             m_offset = new Vector3(m_offsetAmount, m_offset.y, -10f);
+         }
+         if (Input.GetKey(KeyCode.A)) {
+             m_offset = new Vector3(-m_offsetAmount, m_offset.y, -10f);
+         }*/
+
+        m_offset = new Vector3(m_offsetMultiplier * m_player.GetComponent<Rigidbody2D>().velocity.x, m_offsetMultiplier * m_player.GetComponent<Rigidbody2D>().velocity.y,-10f);
         //this is so it shows you were you are going
         Vector3 t_targetPos = m_player.transform.position + m_offset;
         transform.position = Vector3.SmoothDamp(transform.position, t_targetPos, ref m_velocity, m_smoothTime);
