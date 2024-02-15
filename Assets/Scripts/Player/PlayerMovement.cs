@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_lastVelocity = m_rb.velocity;
         LookAtMouse();
+
     }
 
     void OnCollisionEnter2D(Collision2D Collision)
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         //halfs the velocity and reflects at an angle of somekind
         if (Collision.gameObject.CompareTag("Bouncy"))
         {
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f)) * 2;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f)) * 1.5f;
         }
         else
         {
@@ -38,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
         if (Collision.gameObject.CompareTag("Slower"))
         {
             m_rb.velocity /= 2;
+        }    
+        if (Collision.gameObject.CompareTag("Slower"))
+        {
+            Debug.Log("win");
         }
     }
     public void ProcessMoveX(float input)
