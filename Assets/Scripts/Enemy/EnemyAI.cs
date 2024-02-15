@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     private Rigidbody2D m_rb;
-    [SerializeField] private GameObject m_target;
+    public GameObject m_target;
     [SerializeField] private float m_detectRange;
     private float m_distanceToTarget;
 

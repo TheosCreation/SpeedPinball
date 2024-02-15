@@ -1,11 +1,13 @@
 
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class levelGenerator : MonoBehaviour
 {
     public Texture2D map;
-    public colorToPrefab[] colorMappings; 
+    public colorToPrefab[] colorMappings;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,10 @@ public class levelGenerator : MonoBehaviour
         foreach (colorToPrefab colorMapping in colorMappings) {
             if (colorMapping.color.Equals(pixColor)) {
                 Vector2 position = new Vector2(x, y);
-                Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+                var inst = Instantiate(colorMapping.prefab, position, Quaternion.identity, transform);
+                if (colorMapping.prefab.CompareTag("Enemy")) {
+                    inst.GetComponent<EnemyAI>().m_target = Player;
+                }
             }
         }
 
