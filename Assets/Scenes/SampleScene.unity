@@ -2475,11 +2475,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6517983010124818534, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517983010124818534, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6517983010124818534, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2586,7 +2586,7 @@ PrefabInstance:
     - target: {fileID: 6369716563056614265, guid: a5ee780defee94a49a46b3bb301d19cf, type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 2800000, guid: 085f2c1020defaf418aa8f0e6a751410, type: 3}
+      objectReference: {fileID: 2800000, guid: 21b0be786ff708b478991dc451aaee95, type: 3}
     - target: {fileID: 6369716563056614265, guid: a5ee780defee94a49a46b3bb301d19cf, type: 3}
       propertyPath: colorMappings.Array.size
       value: 5
