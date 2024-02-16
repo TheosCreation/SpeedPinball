@@ -23,24 +23,25 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D Collision)
     {
         m_direction = Vector2.Reflect(m_lastVelocity.normalized, Collision.contacts[0].normal);
-        //halfs the velocity and reflects at an angle of somekind
+        
         if (Collision.gameObject.CompareTag("Bouncy"))
         {
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f)) * 1.5f;
+            //same velocity and reflects at an angle of somekind
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f));
         }
         else
         {
-
-            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f);
+            //halfs the velocity and reflects at an angle of somekind
+            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f) / 2;
         }
     }
     private void OnTriggerEnter2D(Collider2D Collision)
     {
-        if (Collision.gameObject.CompareTag("Slower"))
+        if (Collision.gameObject.tag == tag)
         {
             m_rb.velocity /= 2;
         }    
-        if (Collision.gameObject.CompareTag("Slower"))
+        if (Collision.gameObject.tag == tag)
         {
             Debug.Log("win");
         }
