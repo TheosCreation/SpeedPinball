@@ -48,42 +48,31 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ProcessMoveX(float input)
     {
-        if (input > 0)
+        //process right
+        if (m_rb.velocity.x < m_movementVelocityCap)
         {
-            //process right
-            if (m_rb.velocity.x < m_movementVelocityCap)
-            {
-                m_rb.velocity = new Vector2(m_rb.velocity.x + (input * m_acceleration), m_rb.velocity.y);
-            }
+            m_rb.velocity = new Vector2(m_rb.velocity.x + (input * m_acceleration), m_rb.velocity.y);
         }
-        else
+
+        //process left
+        if (m_rb.velocity.x > -m_movementVelocityCap)
         {
-            //process left
-            if (m_rb.velocity.x > -m_movementVelocityCap)
-            {
-                m_rb.velocity = new Vector2(m_rb.velocity.x + (input * m_acceleration), m_rb.velocity.y);
-            }
+            m_rb.velocity = new Vector2(m_rb.velocity.x + (input * m_acceleration), m_rb.velocity.y);
         }
+        
     }
     public void ProcessMoveY(float input)
     {
-        if(input > 0)
+        //process up
+        if (m_rb.velocity.y < m_movementVelocityCap)
         {
-            //process up
-            if (m_rb.velocity.y < m_movementVelocityCap)
-            {
-                m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y + (input * m_acceleration));
-            }
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y + (input * m_acceleration));
         }
-        else
+        //process down
+        if (m_rb.velocity.y > -m_movementVelocityCap)
         {
-            //process down
-            if (m_rb.velocity.y > -m_movementVelocityCap)
-            {
-                m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y + (input * m_acceleration));
-            }
+            m_rb.velocity = new Vector2(m_rb.velocity.x, m_rb.velocity.y + (input * m_acceleration));
         }
-        
     }
     public void LookAtMouse()
     {
