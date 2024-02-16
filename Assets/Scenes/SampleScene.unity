@@ -2392,8 +2392,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7423375539239012082}
     - target: {fileID: 3881351445468236929, guid: a9fe561ad960ff24982c693201d3063b, type: 3}
+      propertyPath: m_smoothTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881351445468236929, guid: a9fe561ad960ff24982c693201d3063b, type: 3}
       propertyPath: m_offsetMultiplier
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9fe561ad960ff24982c693201d3063b, type: 3}
@@ -2462,6 +2466,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6517983010124818532, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
+      propertyPath: m_recoil
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6517983010124818532, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -2516,6 +2524,14 @@ PrefabInstance:
     - target: {fileID: 6517983010124818537, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_Name
       value: Pfb_mainGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068028292601457727, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
+      propertyPath: m_acceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068028292601457727, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
+      propertyPath: m_movementVelocityCap
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
@@ -2586,7 +2602,11 @@ PrefabInstance:
     - target: {fileID: 6369716563056614265, guid: a5ee780defee94a49a46b3bb301d19cf, type: 3}
       propertyPath: map
       value: 
-      objectReference: {fileID: 2800000, guid: 21b0be786ff708b478991dc451aaee95, type: 3}
+      objectReference: {fileID: 2800000, guid: b69d8afde34628346b0254c3eb271bf8, type: 3}
+    - target: {fileID: 6369716563056614265, guid: a5ee780defee94a49a46b3bb301d19cf, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 7423375539239012082}
     - target: {fileID: 6369716563056614265, guid: a5ee780defee94a49a46b3bb301d19cf, type: 3}
       propertyPath: colorMappings.Array.size
       value: 5
