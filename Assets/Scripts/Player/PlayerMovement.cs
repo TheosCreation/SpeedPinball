@@ -37,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D Collision)
     {
-        if (Collision.gameObject.tag == tag)
+        if (Collision.gameObject.CompareTag("Slower"))
         {
             m_rb.velocity /= 2;
         }    
-        if (Collision.gameObject.tag == tag)
+        if (Collision.gameObject.CompareTag("win"))
         {
             Debug.Log("win");
         }
