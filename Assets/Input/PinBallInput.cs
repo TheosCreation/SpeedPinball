@@ -35,6 +35,33 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c469387-24ff-4672-ba34-8e2fd8c1957e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8f14e9b-89d3-4785-bca5-c42f788b3061"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponPrevious"",
+                    ""type"": ""Button"",
+                    ""id"": ""8d7491de-650f-48d0-bac6-cb810ba73292"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +174,61 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f50f9e6-5b54-4d0b-a7a0-fc84732ab806"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d663566-4aef-4321-8a74-eed8013cdd57"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""516bc08d-4502-49d1-912c-e33fae8821ff"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""763d4f86-92de-40e2-9cf3-b23f00eaff86"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d5695fc-2bf2-4491-a560-0bcdd3ddea04"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponPrevious"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -156,6 +238,9 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
         // PinBall
         m_PinBall = asset.FindActionMap("PinBall", throwIfNotFound: true);
         m_PinBall_Movement = m_PinBall.FindAction("Movement", throwIfNotFound: true);
+        m_PinBall_Shoot = m_PinBall.FindAction("Shoot", throwIfNotFound: true);
+        m_PinBall_WeaponNext = m_PinBall.FindAction("WeaponNext", throwIfNotFound: true);
+        m_PinBall_WeaponPrevious = m_PinBall.FindAction("WeaponPrevious", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -216,11 +301,17 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PinBall;
     private IPinBallActions m_PinBallActionsCallbackInterface;
     private readonly InputAction m_PinBall_Movement;
+    private readonly InputAction m_PinBall_Shoot;
+    private readonly InputAction m_PinBall_WeaponNext;
+    private readonly InputAction m_PinBall_WeaponPrevious;
     public struct PinBallActions
     {
         private @PinBallInput m_Wrapper;
         public PinBallActions(@PinBallInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PinBall_Movement;
+        public InputAction @Shoot => m_Wrapper.m_PinBall_Shoot;
+        public InputAction @WeaponNext => m_Wrapper.m_PinBall_WeaponNext;
+        public InputAction @WeaponPrevious => m_Wrapper.m_PinBall_WeaponPrevious;
         public InputActionMap Get() { return m_Wrapper.m_PinBall; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -233,6 +324,15 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PinBallActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PinBallActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PinBallActionsCallbackInterface.OnMovement;
+                @Shoot.started -= m_Wrapper.m_PinBallActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_PinBallActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_PinBallActionsCallbackInterface.OnShoot;
+                @WeaponNext.started -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponNext;
+                @WeaponNext.performed -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponNext;
+                @WeaponNext.canceled -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponNext;
+                @WeaponPrevious.started -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponPrevious;
+                @WeaponPrevious.performed -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponPrevious;
+                @WeaponPrevious.canceled -= m_Wrapper.m_PinBallActionsCallbackInterface.OnWeaponPrevious;
             }
             m_Wrapper.m_PinBallActionsCallbackInterface = instance;
             if (instance != null)
@@ -240,6 +340,15 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @WeaponNext.started += instance.OnWeaponNext;
+                @WeaponNext.performed += instance.OnWeaponNext;
+                @WeaponNext.canceled += instance.OnWeaponNext;
+                @WeaponPrevious.started += instance.OnWeaponPrevious;
+                @WeaponPrevious.performed += instance.OnWeaponPrevious;
+                @WeaponPrevious.canceled += instance.OnWeaponPrevious;
             }
         }
     }
@@ -247,5 +356,8 @@ public partial class @PinBallInput : IInputActionCollection2, IDisposable
     public interface IPinBallActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnWeaponNext(InputAction.CallbackContext context);
+        void OnWeaponPrevious(InputAction.CallbackContext context);
     }
 }

@@ -2,24 +2,18 @@ using UnityEngine;
 
 public class Pistol : scr_Weapons
 {
-    // Start is called before the first frame update
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isShooting && readyToShoot)
         {
-            shoot();
+            PerformShot();
         }
     }
-    void shoot()
+    void PerformShot()
     {
-        m_cameraRef.GetComponent<scr_Camera>().ScreenShake(0.1f, 0.25f);
+        readyToShoot = false;
+
+        m_cameraRef.GetComponentInParent<scr_Camera>().ScreenShake(0.1f, 0.25f);
         var hit = Physics2D.Raycast(
             m_gunPoint.position,
             transform.up,
@@ -47,7 +41,18 @@ public class Pistol : scr_Weapons
 
         }
 
-        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
+        Invoke("ResetShot", rateOfFire);
+
+
+        if (!isAutomatic)
+        {
+            Invoke("EndShot", rateOfFire);
+        }
+    }
+
+    private void ResetShot()
+    {
+        readyToShoot = true;
     }
 }
 

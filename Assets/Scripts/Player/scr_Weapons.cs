@@ -11,8 +11,20 @@ public class scr_Weapons : MonoBehaviour
     [SerializeField] protected Animator m_muzzleFlash;
     [SerializeField] protected float m_recoil;
     [SerializeField] protected float m_damage;
+    [SerializeField] protected bool isAutomatic;
+    [SerializeField] protected float rateOfFire;
     public LayerMask m_bulletPassThrough;
-    protected Rigidbody2D rb;
+    protected bool isShooting;
+    protected bool readyToShoot = true;
 
+    public void StartShot()
+    {
+        isShooting = true;
+    }
+
+    public void EndShot()
+    {
+        isShooting = false;
+    }
 }
     

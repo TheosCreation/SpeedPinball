@@ -2,26 +2,20 @@ using UnityEngine;
 
 public class Shotgun : scr_Weapons
 {
-    // Start is called before the first frame update
-
     [SerializeField] private float m_shotgunSpread = 0.2f;
     [SerializeField] private int m_shotgunCount = 5;
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isShooting && readyToShoot)
         {
-            shoot();
+            PerformShot();
         }
     }
-    void shoot()
+    void PerformShot()
     {
+        readyToShoot = false;
+
         m_cameraRef.GetComponent<scr_Camera>().ScreenShake(0.25f, 0.5f);
         for (int i = -m_shotgunCount; i < m_shotgunCount; i++)
         {
@@ -57,7 +51,18 @@ public class Shotgun : scr_Weapons
             }
         }
 
-        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
+        Invoke("ResetShot", rateOfFire);
+
+
+        if (!isAutomatic)
+        {
+            Invoke("EndShot", rateOfFire);
+        }
+    }
+
+    private void ResetShot()
+    {
+        readyToShoot = true;
     }
 }
 

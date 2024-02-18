@@ -5,6 +5,8 @@ public class InputManager : MonoBehaviour
     public PinBallInput pinBallInput;
     public PinBallInput.PinBallActions PinBall;
     private PlayerMovement movement;
+    private WeaponInput weaponInput;
+    private WeaponSwitch weaponSwitching;
     // Start is called before the first frame update
     void Awake()
     {
@@ -12,6 +14,13 @@ public class InputManager : MonoBehaviour
         PinBall = pinBallInput.PinBall;
 
         movement = GetComponent<PlayerMovement>();
+        weaponInput = GetComponent<WeaponInput>();
+        weaponSwitching = GetComponentInChildren<WeaponSwitch>();
+
+        PinBall.Shoot.started += ctx => weaponInput.StartShot();
+        PinBall.Shoot.canceled += ctx => weaponInput.EndShot();
+
+        PinBall.WeaponNext.performed += ctx => weaponSwitching.WeaponNext();
     }
 
     // Update is called once per frame
