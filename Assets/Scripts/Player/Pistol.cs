@@ -22,7 +22,7 @@ public class Pistol : scr_Weapons
             m_bulletTrail,
             m_gunPoint.position,
             transform.rotation
-            ); ;
+            );
         var trailScript = trail.GetComponent<scr_BulletTrail>();
         if (hit.collider != null)
         {
