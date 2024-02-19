@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             ProcessHeavyAbility();
+        }    
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            m_rb.velocity *= 2;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -38,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1,1,1);
             m_rb.mass = m_baseMass;
             m_bounceMultiplier = m_defaultBounceMultiplier;
+            
         }
 
     }
