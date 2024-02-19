@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //halfs the velocity and reflects at an angle of somekind
-            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f) / 2;
+            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude / 2, 0f) ;
         }
     }
     private void OnTriggerEnter2D(Collider2D Collision)
