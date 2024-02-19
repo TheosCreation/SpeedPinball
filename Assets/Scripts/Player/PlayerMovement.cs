@@ -10,13 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public float m_baseDrag = 1.0f;
     private float m_acceleration = 0.1f;
     public float m_movementVelocityCap = 20.0f;
- 
+    private float m_bounceMultiplier = 1.0f;
+    public float m_defaultBounceMultiplier = 1.0f;
+
+
     void Start()
     {
        m_rb = GetComponent<Rigidbody2D>();
        m_acceleration = m_baseAcceleration;
        m_rb.drag = m_baseDrag;
        m_rb.mass = m_baseMass;
+        m_bounceMultiplier = m_defaultBounceMultiplier;
     }
 
     void Update()
@@ -31,8 +35,9 @@ public class PlayerMovement : MonoBehaviour
         {
             m_acceleration = m_baseAcceleration;
             m_rb.drag = m_baseDrag;
-            transform.localScale =new Vector3(1,1,1);
+            transform.localScale = new Vector3(1,1,1);
             m_rb.mass = m_baseMass;
+            m_bounceMultiplier = m_defaultBounceMultiplier;
         }
 
     }
@@ -44,12 +49,12 @@ public class PlayerMovement : MonoBehaviour
         if (Collision.gameObject.CompareTag("Bouncy"))
         {
             //same velocity and reflects at an angle of somekind
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f));
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f))*m_bounceMultiplier;
         }
         else
         {
             //halfs the velocity and reflects at an angle of somekind
-            m_rb.velocity = m_direction * Mathf.Max(m_lastVelocity.magnitude / 2, 0f) ;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude / 2, 0f))* m_bounceMultiplier;
         }
     }
     private void OnTriggerEnter2D(Collider2D Collision)
@@ -100,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
         m_rb.drag = 0.0f;
         m_acceleration = 0.1f;
         m_rb.mass = 10.0f;
-        Debug.Log("sex");
-        transform.localScale = new Vector3(1.1f, 1.1f, 1);
+        m_bounceMultiplier = 1.5f;
+        transform.localScale = new Vector3(1.2f, 1.2f, 1);
+        // make this not a hardcoded mess, maybe make a game controler or smthng
     }
 }
