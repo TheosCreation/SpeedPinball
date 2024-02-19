@@ -5,18 +5,35 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D m_rb;
     private Vector2 m_lastVelocity;
     public Vector2 m_direction;
-    public float m_acceleration = 0.1f;
+    public float m_baseAcceleration = 1.0f;
+    public float m_baseMass = 1.0f;
+    public float m_baseDrag = 1.0f;
+    private float m_acceleration = 0.1f;
     public float m_movementVelocityCap = 20.0f;
  
     void Start()
     {
        m_rb = GetComponent<Rigidbody2D>();
+       m_acceleration = m_baseAcceleration;
+       m_rb.drag = m_baseDrag;
+       m_rb.mass = m_baseMass;
     }
 
     void Update()
     {
         m_lastVelocity = m_rb.velocity;
         LookAtMouse();
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ProcessHeavyAbility();
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            m_acceleration = m_baseAcceleration;
+            m_rb.drag = m_baseDrag;
+            transform.localScale =new Vector3(1,1,1);
+            m_rb.mass = m_baseMass;
+        }
 
     }
 
@@ -78,5 +95,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 i_mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.up = i_mousePos - new Vector2(transform.position.x, transform.position.y);
+    }
+    public void ProcessHeavyAbility() {
+        m_rb.drag = 0.0f;
+        m_acceleration = 0.1f;
+        m_rb.mass = 10.0f;
+        Debug.Log("sex");
+        transform.localScale = new Vector3(1.1f, 1.1f, 1);
     }
 }

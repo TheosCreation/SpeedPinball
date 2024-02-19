@@ -2516,6 +2516,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pfb_mainGuy
       objectReference: {fileID: 0}
+    - target: {fileID: 6517983010124818538, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7423375539239012096, guid: 3aa3aca4202305e4aa5bad89016549c0, type: 3}
       propertyPath: m_cameraRef
       value: 
