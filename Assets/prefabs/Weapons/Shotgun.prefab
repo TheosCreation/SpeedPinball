@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8257375216517113543}
-  - component: {fileID: 8257375216517113542}
+  - component: {fileID: -3250492653597380789}
   m_Layer: 6
-  m_Name: Pistol
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8257375216517113542
+--- !u!114 &-3250492653597380789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,21 +42,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8257375216517113541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1fc199084a23548abad1a8764fd5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 165d3d3278f684741a236c81b99f89b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_gunPoint: {fileID: 8257375218098262007}
   m_bulletTrail: {fileID: 6618160832374844725, guid: e98580f391e899d439b6fb3c0d05f5ea, type: 3}
   m_cameraRef: {fileID: 0}
-  m_weaponRange: 50
+  m_weaponRange: 10
   m_muzzleFlash: {fileID: 0}
-  m_recoil: 1
+  m_recoil: 20
   m_damage: 20
   isAutomatic: 0
-  rateOfFire: 0.2
+  rateOfFire: 2
   m_bulletPassThrough:
     serializedVersion: 2
     m_Bits: 64
+  m_shotgunSpread: 0.2
+  m_shotgunCount: 5
 --- !u!1 &8257375218098262006
 GameObject:
   m_ObjectHideFlags: 0

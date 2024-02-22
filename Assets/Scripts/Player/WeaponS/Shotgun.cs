@@ -5,6 +5,10 @@ public class Shotgun : scr_Weapons
     [SerializeField] private float m_shotgunSpread = 0.2f;
     [SerializeField] private int m_shotgunCount = 5;
 
+    private void Awake()
+    {
+        rb = GetComponentInParent<Rigidbody2D>();
+    }
     void Update()
     {
         if (isShooting && readyToShoot)
@@ -12,11 +16,12 @@ public class Shotgun : scr_Weapons
             PerformShot();
         }
     }
+  
     void PerformShot()
     {
         readyToShoot = false;
 
-        m_cameraRef.GetComponent<scr_Camera>().ScreenShake(0.25f, 0.5f);
+        m_cameraRef.GetComponent<scr_Camera>().ScreenShake(0.15f, 0.3f);
         for (int i = -m_shotgunCount; i < m_shotgunCount; i++)
         {
             // Calculate a random offset for each bullet
@@ -41,7 +46,11 @@ public class Shotgun : scr_Weapons
             var trailScript = trail.GetComponent<scr_BulletTrail>();
             if (hit.collider != null)
             {
-
+                var hitEnemy = hit.collider.gameObject;
+                if (hitEnemy.CompareTag("Enemy"))
+                {
+                    hitEnemy.GetComponent<EnemyAI>().TakeDamage(m_damage);
+                }
                 trailScript.SetTargetPos(hit.point);
             }
             else
@@ -50,7 +59,7 @@ public class Shotgun : scr_Weapons
                 trailScript.SetTargetPos(endPos);
             }
         }
-
+        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
         Invoke("ResetShot", rateOfFire);
 
 

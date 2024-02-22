@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Pistol : scr_Weapons
 {
+    private void Awake()
+    {
+        rb = GetComponentInParent<Rigidbody2D>();
+    }
     void Update()
     {
         if (isShooting && readyToShoot)
@@ -13,7 +17,7 @@ public class Pistol : scr_Weapons
     {
         readyToShoot = false;
 
-        m_cameraRef.GetComponentInParent<scr_Camera>().ScreenShake(0.1f, 0.25f);
+        m_cameraRef.GetComponentInParent<scr_Camera>().ScreenShake(0.08f, 0.22f);
         var hit = Physics2D.Raycast(
             m_gunPoint.position,
             transform.up,
@@ -40,7 +44,7 @@ public class Pistol : scr_Weapons
             trailScript.SetTargetPos(endPos);
 
         }
-
+        rb.velocity = new Vector2(rb.velocity.x - transform.up.x * m_recoil, rb.velocity.y - transform.up.y * m_recoil);
         Invoke("ResetShot", rateOfFire);
 
 

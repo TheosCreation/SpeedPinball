@@ -13,6 +13,7 @@ public class scr_Weapons : MonoBehaviour
     [SerializeField] protected float m_damage;
     [SerializeField] protected bool isAutomatic;
     [SerializeField] protected float rateOfFire;
+    protected Rigidbody2D rb;
     public LayerMask m_bulletPassThrough;
     protected bool isShooting;
     protected bool readyToShoot = true;
