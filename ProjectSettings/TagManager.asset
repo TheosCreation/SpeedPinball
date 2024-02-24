@@ -8,6 +8,7 @@ TagManager:
   - Bouncy
   - Slower
   - win
+  - destructable
   layers:
   - Default
   - TransparentFX

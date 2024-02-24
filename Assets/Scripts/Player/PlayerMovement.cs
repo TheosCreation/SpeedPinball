@@ -54,12 +54,12 @@ public class PlayerMovement : MonoBehaviour
         if (Collision.gameObject.CompareTag("Bouncy"))
         {
             //same velocity and reflects at an angle of somekind
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude, 0f))*m_bounceMultiplier;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude/2, 0f))*m_bounceMultiplier;
         }
         else
         {
             //halfs the velocity and reflects at an angle of somekind
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude / 2, 0f))* m_bounceMultiplier;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude / 4, 0f))* m_bounceMultiplier;
         }
     }
     private void OnTriggerEnter2D(Collider2D Collision)
@@ -109,8 +109,8 @@ public class PlayerMovement : MonoBehaviour
     public void ProcessHeavyAbility() {
         m_rb.drag = 0.0f;
         m_acceleration = 0.1f;
-        m_rb.mass = 10.0f;
-        m_bounceMultiplier = 1.5f;
+        m_rb.mass = 120.0f;
+        m_bounceMultiplier = 2f;
         transform.localScale = new Vector3(1.2f, 1.2f, 1);
         // make this not a hardcoded mess, maybe make a game controler or smthng
     }

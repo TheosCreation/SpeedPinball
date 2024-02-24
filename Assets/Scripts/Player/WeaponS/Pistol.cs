@@ -33,8 +33,14 @@ public class Pistol : scr_Weapons
             var hitEnemy = hit.collider.gameObject;
             if (hitEnemy.CompareTag("Enemy")) {
                 hitEnemy.GetComponent<EnemyAI>().TakeDamage(m_damage);
+            }    
+            else if (hitEnemy.CompareTag("destructable")) {
+                Destroy(hitEnemy);
             }
   
+
+
+        
             trailScript.SetTargetPos(hit.point);
         }
         else
