@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_movementVelocityCap = 20.0f;
     private float m_bounceMultiplier = 1.0f;
     public float m_defaultBounceMultiplier = 1.0f;
-
+    public bool g_win = false;
 
     void Start()
     {
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }    
         if (Collision.gameObject.CompareTag("win"))
         {
-            Debug.Log("win");
+            g_win = true;
         }
     }
     public void ProcessMoveX(float input)
