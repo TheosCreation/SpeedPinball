@@ -8,10 +8,27 @@ public class levelGenerator : MonoBehaviour
     public Texture2D map;
     public colorToPrefab[] colorMappings;
     public GameObject Player;
+    public Texture2D[] levels;
+    int currentLevel = 0;
     // Start is called before the first frame update
     void Start()
     {
+        map = levels[currentLevel];
         GenerateLevel();
+    }
+     void Update()
+    {
+        if (Player.GetComponent<PlayerMovement>().g_win&& currentLevel< levels.Length) {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            Player.transform.position = new Vector3(12, 12, 0);
+            currentLevel++;
+            map = levels[currentLevel];
+            GenerateLevel();
+            Player.GetComponent<PlayerMovement>().g_win = false;
+        }
     }
 
     // Update is called once per frame
