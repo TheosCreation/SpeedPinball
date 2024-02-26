@@ -1,4 +1,3 @@
-using Mono.CompilerServices.SymbolWriter;
 using UnityEngine;
 
 public class scr_Camera : MonoBehaviour
