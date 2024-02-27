@@ -9,6 +9,7 @@ TagManager:
   - Slower
   - win
   - destructable
+  - faster
   layers:
   - Default
   - TransparentFX
