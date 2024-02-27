@@ -10,7 +10,9 @@ public class timer : MonoBehaviour
     [SerializeField] GameObject playerRef;
     void Update()
     {
+
         if (playerRef.GetComponent<PlayerMovement>().g_win == true) {
+            
             return;
         }
         timerValue += Time.deltaTime;

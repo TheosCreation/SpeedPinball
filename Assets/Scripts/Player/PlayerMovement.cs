@@ -54,12 +54,12 @@ public class PlayerMovement : MonoBehaviour
         if (Collision.gameObject.CompareTag("Bouncy"))
         {
             //same velocity and reflects at an angle of somekind
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude/2, 0f))*m_bounceMultiplier;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude/1.5f, 0f))*m_bounceMultiplier;
         }
         else
         {
             //halfs the velocity and reflects at an angle of somekind
-            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude / 4, 0f))* m_bounceMultiplier;
+            m_rb.velocity = (m_direction * Mathf.Max(m_lastVelocity.magnitude / 3, 0f))* m_bounceMultiplier;
         }
     }
     private void OnTriggerEnter2D(Collider2D Collision)

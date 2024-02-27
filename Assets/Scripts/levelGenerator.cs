@@ -18,7 +18,7 @@ public class levelGenerator : MonoBehaviour
     }
      void Update()
     {
-        if (Player.GetComponent<PlayerMovement>().g_win&& currentLevel< levels.Length) {
+        if (Player.GetComponent<PlayerMovement>().g_win&& currentLevel< levels.Length-1) {
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);

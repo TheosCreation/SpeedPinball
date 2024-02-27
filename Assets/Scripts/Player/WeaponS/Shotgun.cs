@@ -51,6 +51,10 @@ public class Shotgun : scr_Weapons
                 {
                     hitEnemy.GetComponent<EnemyAI>().TakeDamage(m_damage);
                 }
+                else if (hitEnemy.CompareTag("destructable"))
+                {
+                    Destroy(hitEnemy);
+                }
                 trailScript.SetTargetPos(hit.point);
             }
             else

@@ -10,7 +10,20 @@ public class WeaponSwitch : MonoBehaviour
     private void Start()
     {
         currentWeapon = GetComponentInChildren<scr_Weapons>();
-        SelectWeapon();
+        SelectWeapon(selectedWeapon);
+        
+    }
+     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedWeapon = 0;
+            SelectWeapon(selectedWeapon);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            selectedWeapon = 1;
+            SelectWeapon(selectedWeapon);
+        }
     }
     public void WeaponNext()
     {
@@ -22,7 +35,7 @@ public class WeaponSwitch : MonoBehaviour
         {
             selectedWeapon++;
         }
-        SelectWeapon();
+        SelectWeapon(selectedWeapon);
     }
     public void WeaponPrevious()
     {
@@ -34,14 +47,14 @@ public class WeaponSwitch : MonoBehaviour
         {
             selectedWeapon--;
         }
-        SelectWeapon();
+        SelectWeapon(selectedWeapon);
     }
-    public void SelectWeapon()
+    public void SelectWeapon(int _selectedWeapon)
     {
         int i = 0;
         foreach (Transform weapon in transform)
         {
-            if (i == selectedWeapon)
+            if (i == _selectedWeapon)
             {
                 weapon.gameObject.SetActive(true);
                 currentWeapon = weapon.gameObject.GetComponent<scr_Weapons>();
