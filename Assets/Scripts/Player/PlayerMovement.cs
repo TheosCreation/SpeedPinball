@@ -67,6 +67,10 @@ public class PlayerMovement : MonoBehaviour
         if (Collision.gameObject.CompareTag("Slower"))
         {
             m_rb.velocity /= 2;
+        }      
+        if (Collision.gameObject.CompareTag("faster"))
+        {
+            m_rb.velocity *= 1.5f;
         }    
         if (Collision.gameObject.CompareTag("win"))
         {
